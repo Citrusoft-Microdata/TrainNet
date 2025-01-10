@@ -31,6 +31,10 @@ def southSide():
     location = ("north")
     return "<h1>Train Moving Towards the North End</h1>"
 
+@app.route("/changeroute")
+def changeroute():
+    appblueprint.changeRoute()
+
 @app.route("/north")
 def northSide():
     print(bcolors.OKCYAN + "Tram at North end.")

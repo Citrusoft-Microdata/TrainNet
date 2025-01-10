@@ -19,6 +19,9 @@ delay = float(0.75)
 def index():
     return "<h1>Hi</h1>"
 
+def changeRoute():
+    automationhat.output.one.toggle()
+
 #@app.route("/south")
 def southSide():
     print(bcolors.OKCYAN + "Tram at South end.")
@@ -27,7 +30,7 @@ def southSide():
     automationhat.relay.one.on()
     automationhat.relay.two.on()
     location = ("south")
-
+    running = ("true")
 #@app.route("/north")
 def northSide():
     print(bcolors.OKCYAN + "Tram at North end.")
@@ -36,6 +39,7 @@ def northSide():
     time.sleep(delay)
     automationhat.relay.three.on()
     location = ("north")
+    running = ("true")
 
 def quitInputFail():
     print(bcolors.WARNING + "ERROR: input failure")
@@ -44,7 +48,7 @@ def quitInputFail():
     automationhat.relay.three.off()
 #    uinput = input("Restart? (Y/N)")
 #    if uinput == ("n"):
-#    running = ("false")
+    running = ("false")
 #    else:
 #        print("Restarting...")
 ncountdown = int(1)
@@ -70,8 +74,8 @@ def appstart():
             ncountdown = countdown
             location = ("north")
         time.sleep(0.0625)
-        ncountdown = (ncountdown - 1)
-        if (ncountdown == 0):
-            quitInputFail()
-            break
+#        ncountdown = (ncountdown - 1)
+#        if (ncountdown == 0):
+#            quitInputFail()
+#            break
 #        return("<h1>System has started</h1>")
